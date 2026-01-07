@@ -9,7 +9,7 @@
     "build": "tsc",
     "lint": "eslint . --ext .ts --fix",
     "test": "vitest --coverage --reporter=default --reporter=html",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "vitest --coverage",
     "format": "prettier --write .",
     "prepare": "husky"
   },
@@ -54,6 +54,7 @@
     "http-status": "^2.1.0",
     "jsonwebtoken": "^9.0.3",
     "tsx": "^4.21.0",
+    "vite-tsconfig-paths": "^6.0.3",
     "winston": "^3.19.0",
     "zod": "^4.3.5"
   },
@@ -63,5 +64,10 @@
       "eslint --fix",
       "vitest --changed"
     ]
+  },
+  "imports": {
+    "#*.json": "src/**/*.json",
+    "#*": "src/**/*.js",
+    "#seeders": "seeders/*"
   }
 }

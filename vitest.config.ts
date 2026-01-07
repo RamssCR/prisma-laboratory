@@ -1,6 +1,8 @@
 import { defineConfig, coverageConfigDefaults } from 'vitest/config';
+import paths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  plugins: [paths()],
   test: {
     globals: true,
     environment: 'node',
