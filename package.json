@@ -1,0 +1,60 @@
+{
+  "name": "prisma-laboratory",
+  "version": "1.0.0",
+  "description": "A laboratory project using Prisma ORM to explore database management in constrast to sequelize.",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "node dist/app.js",
+    "dev": "tsx -r tsconfig-paths/register --watch --env-file-if-exists=.env src/app.ts",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts --fix",
+    "test": "vitest --coverage --reporter=default --reporter=html",
+    "test:coverage": "vitest run --coverage",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "keywords": ["prisma", "orm", "database", "nodejs", "typescript"],
+  "author": "Alejojsjs14",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@commitlint/cli": "^20.3.0",
+    "@commitlint/config-conventional": "^20.3.0",
+    "@eslint/js": "^9.39.2",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.0.3",
+    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/ui": "^4.0.16",
+    "commitlint": "^20.3.0",
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.52.0",
+    "vitest": "^4.0.16"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "http-status": "^2.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "tsx": "^4.21.0",
+    "winston": "^3.19.0",
+    "zod": "^4.3.5"
+  },
+  "lint-staged": {
+    "**/*.{ts,js}": [
+      "prettier --write",
+      "eslint --fix",
+      "vitest --changed"
+    ]
+  }
+}
