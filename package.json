@@ -13,7 +13,13 @@
     "format": "prettier --write .",
     "prepare": "husky"
   },
-  "keywords": ["prisma", "orm", "database", "nodejs", "typescript"],
+  "keywords": [
+    "prisma",
+    "orm",
+    "database",
+    "nodejs",
+    "typescript"
+  ],
   "author": "Alejojsjs14",
   "license": "ISC",
   "type": "module",
@@ -32,6 +38,7 @@
     "globals": "^17.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "node-mocks-http": "^1.17.2",
     "prettier": "^3.7.4",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3",
