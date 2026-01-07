@@ -6,7 +6,14 @@ export const env = z.object({
     .default('development'),
   PORT: z.coerce.number().default(3000),
   JWT_SECRET: z.string().min(1, 'JWT_SECRET is required'),
+  JWT_REFRESH_SECRET: z.string().min(1, 'JWT_REFRESH_SECRET is required'),
   JWT_EXPIRES_IN: z.string().default('1h'),
+  JWT_REFRESH_EXPIRES_IN: z.string().default('7d'),
+  DEBUG: z.preprocess((val) => {
+    if (val === 'true') return true;
+    if (val === 'false') return false;
+    return val;
+  }, z.boolean().default(false)),
   ALLOWED_ORIGINS: z
     .string()
     .transform((val) => val.trim().split(','))
