@@ -4,11 +4,13 @@ import { DATABASE_URL } from './environment';
 import { logger } from '#utils/logger';
 
 const connectionString = `${DATABASE_URL}`;
-
 const adapter = new PrismaPg({ connectionString });
-export const prisma = () => {
+
+export const prisma = new PrismaClient({ adapter });
+
+export const connectDb = async () => {
   try {
-    new PrismaClient({ adapter }).$connect();
+    await prisma.$connect();
     logger.info('Database connections established');
   } catch (error) {
     logger.error('Error establishing database connection', error);

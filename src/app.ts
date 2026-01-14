@@ -9,7 +9,8 @@ import helmet from 'helmet';
 import { limiter } from '#middlewares/limit';
 import { logger } from '#utils/logger';
 import parser from 'cookie-parser';
-import { prisma } from '#config/db';
+import { connectDb } from '#config/db';
+import { router } from '#routes/index';
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.get('/health', (_req, res) => {
   });
 });
 
+app.use('/api/v1', router);
 app.use(errorPath);
 app.use(errorHandler);
 
@@ -49,7 +51,7 @@ if (
   basename(fileURLToPath(import.meta.url)) === basename(process.argv[1]) &&
   NODE_ENV !== 'test'
 ) {
-  prisma();
+  await connectDb();
   app.listen(PORT, () => logger.info(`Server is running on port ${PORT}`));
 }
 
