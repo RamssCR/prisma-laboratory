@@ -22,6 +22,7 @@ export const env = z.object({
   LIMIT_MESSAGE: z
     .string()
     .default('Too many requests from this IP, please try again later.'),
+  DATABASE_URL: z.url(),
   // Add other environment variables as needed
 });
 

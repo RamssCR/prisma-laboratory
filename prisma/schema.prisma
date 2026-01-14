@@ -19,38 +19,69 @@ model User {
   name String? @db.Text
   password String @db.Text
   role Role @default(USER)
-  vehicles Vehicle[]
 }
 
 model Vehicle {
   id Int @id @default(autoincrement())
-  make String @db.Text
+  brandId Int @db.Integer
+  brand Brand @relation(fields: [brandId], references: [id])
   model String @db.Text
   year Int
-  owner User @relation(fields: [ownerId], references: [id])
-  ownerId Int @db.Integer
+  displacement Int?
+
+  compatibilities ProductCompability[]
+
+  @@unique([brandId, model, year])
 }
 
 model Brand {
   id Int @id @default(autoincrement())
   name String @db.Text
   products Product[]
+  vehicles Vehicle[]
 }
 
 model Category {
   id Int @id @default(autoincrement())
   name String @db.Text
+  
   products Product[]
 }
 
 model Product {
   id Int @id @default(autoincrement())
+  sku String @unique
   name String @db.Text
   price Float @db.DoublePrecision
+  minStock Int @default(5) 
   category Category @relation(fields: [categoryId], references: [id])
   categoryId Int @db.Integer 
   brand Brand @relation(fields: [brandId], references: [id])
   brandId Int @db.Integer
+
+  movements InventoryMovement[]
+  compatibility ProductCompability[]
+}
+
+model InventoryMovement {
+  id Int @id @default(autoincrement())
+  productId Int @db.Integer
+  product Product @relation(fields: [productId], references: [id])
+  quantity Int @db.Integer
+  type String @db.Text
+  createdAt DateTime @default(now())
+}
+
+model ProductCompability {
+  id Int @id @default(autoincrement())
+  productId Int @db.Integer
+  vehicleId Int @db.Integer
+
+  product Product @relation(fields: [productId], references: [id])
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
+
+  notes String? @db.Text
+
 }
 
 enum Role {
