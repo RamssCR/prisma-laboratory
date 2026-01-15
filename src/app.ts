@@ -9,6 +9,7 @@ import helmet from 'helmet';
 import { limiter } from '#middlewares/limit';
 import { logger } from '#utils/logger';
 import parser from 'cookie-parser';
+import { connectDb } from '#config/db';
 
 const app = express();
 
@@ -48,6 +49,7 @@ if (
   basename(fileURLToPath(import.meta.url)) === basename(process.argv[1]) &&
   NODE_ENV !== 'test'
 ) {
+  await connectDb();
   app.listen(PORT, () => logger.info(`Server is running on port ${PORT}`));
 }
 

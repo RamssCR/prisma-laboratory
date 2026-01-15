@@ -21,4 +21,5 @@ export const {
   LIMIT,
   LIMIT_MESSAGE,
   PORT,
+  DATABASE_URL,
 } = parsed.data;
