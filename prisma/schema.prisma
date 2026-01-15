@@ -19,6 +19,10 @@ model User {
   name String? @db.Text
   password String @db.Text
   role Role @default(USER)
+  active Boolean @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
 }
 
 model Vehicle {
@@ -28,6 +32,9 @@ model Vehicle {
   model String @db.Text
   year Int
   displacement Int?
+  active Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
 
   compatibilities ProductCompability[]
 
@@ -37,6 +44,10 @@ model Vehicle {
 model Brand {
   id Int @id @default(autoincrement())
   name String @db.Text
+  active Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+
   products Product[]
   vehicles Vehicle[]
 }
@@ -44,6 +55,9 @@ model Brand {
 model Category {
   id Int @id @default(autoincrement())
   name String @db.Text
+  active Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
   
   products Product[]
 }
@@ -58,6 +72,9 @@ model Product {
   categoryId Int @db.Integer 
   brand Brand @relation(fields: [brandId], references: [id])
   brandId Int @db.Integer
+  active Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
 
   movements InventoryMovement[]
   compatibility ProductCompability[]
@@ -69,13 +86,18 @@ model InventoryMovement {
   product Product @relation(fields: [productId], references: [id])
   quantity Int @db.Integer
   type String @db.Text
+  active Boolean @default(true)
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
 }
 
 model ProductCompability {
   id Int @id @default(autoincrement())
   productId Int @db.Integer
   vehicleId Int @db.Integer
+  active Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
 
   product Product @relation(fields: [productId], references: [id])
   vehicle Vehicle @relation(fields: [vehicleId], references: [id])
