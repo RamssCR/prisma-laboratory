@@ -10,6 +10,7 @@ import { limiter } from '#middlewares/limit';
 import { logger } from '#utils/logger';
 import parser from 'cookie-parser';
 import { connectDb } from '#config/db';
+import { router } from '#routes/index';
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.get('/health', (_req, res) => {
   });
 });
 
+app.use('/api/v1', router);
 app.use(errorPath);
 app.use(errorHandler);
 
