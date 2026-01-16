@@ -61,11 +61,12 @@ export const getUsers: RequestHandler = async (_req, res, next) => {
 export const updateUser: RequestHandler = async (req, res, next) => {
   try {
     const { email } = req.params;
-    await update(email, req.body);
+    const user = await update(email, req.body);
 
     res.json({
       success: true,
       message: 'User updated successfully',
+      user,
     });
   } catch (error) {
     next(error);

@@ -9,12 +9,10 @@ import type { UserSchema } from '#schemas/user';
  * @example
  * await createUser({ name: Arnulfo, email: arnulfo@gmail.com, password: 1234 })
  */
-export const create = async (data: UserSchema) => {
-  const user = await prisma.user.create({
+export const create = async (data: UserSchema) =>
+  await prisma.user.create({
     data: { ...data, password: await hashValue(data.password) },
   });
-  return user;
-};
 
 /**
  * Busca todos los usuarios de la base de datos
@@ -23,10 +21,7 @@ export const create = async (data: UserSchema) => {
  * await findMany()
  * // returns - users: [{...}, {...}]
  */
-export const findMany = async () => {
-  const user = await prisma.user.findMany();
-  return user;
-};
+export const findMany = () => prisma.user.findMany();
 
 /**
  * Actualiza un usuario por su email
@@ -36,13 +31,11 @@ export const findMany = async () => {
  * @example
  * await update('alejo@email.com', { name: 'carlos', ... })
  */
-export const update = async (email: string, data: Partial<UserSchema>) => {
-  const user = await prisma.user.update({
+export const update = (email: string, data: Partial<UserSchema>) =>
+  prisma.user.update({
     where: { email },
     data,
   });
-  return user;
-};
 
 /**
  * Realiza una operacion de eliminacion logica para el modelo User
@@ -50,9 +43,8 @@ export const update = async (email: string, data: Partial<UserSchema>) => {
  * @example
  * await softDelete(2)
  */
-export const softDelete = async (id: number) => {
-  await prisma.user.update({
+export const softDelete = (id: number) =>
+  prisma.user.update({
     where: { id },
     data: { active: false },
   });
-};

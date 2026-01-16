@@ -17,7 +17,7 @@ router.patch(
   '/:email',
   [
     validate(userSchema, { target: 'params', mode: 'partial' }),
-    validate(userSchema, { mode: 'partial' }),
+    validate(userSchema.omit({ password: true }), { mode: 'partial' }),
   ],
   updateUser,
 );

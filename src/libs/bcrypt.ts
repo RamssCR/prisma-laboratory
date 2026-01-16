@@ -7,7 +7,7 @@ import { compare, hash } from 'bcryptjs';
  * const hashed = await hashValue("miContraseña");
  * console.log(hashed)
  */
-export const hashValue = async (value: string) => await hash(value, 10);
+export const hashValue = (value: string) => hash(value, 10);
 
 /**
  * Compara un texto plano con un valor hasheado
@@ -18,7 +18,7 @@ export const hashValue = async (value: string) => await hash(value, 10);
  * const isMatch = await compareValue('miContraseña', hashed)
  * console.log(isMatch) - true si coinciden, false si no coinciden
  */
-export const compareValue = async (
+export const compareValue = (
   value: string,
   hashedValue: string,
-): Promise<boolean> => await compare(value, hashedValue);
+): Promise<boolean> => compare(value, hashedValue);

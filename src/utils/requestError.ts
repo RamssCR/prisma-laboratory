@@ -32,6 +32,10 @@ export class RequestError extends Error {
     }
   }
 
+  /**
+   * Retorna el error como un Json
+   * @returns Json
+   */
   public toJSON(): Record<string, unknown> {
     return {
       name: this.name,
@@ -42,6 +46,10 @@ export class RequestError extends Error {
     };
   }
 
+  /**
+   * Retorna el error como un string
+   * @returns String
+   */
   public toString(): string {
     return `${this.name} [${this.method}] (status: ${this.status}): ${this.message} - Details: ${JSON.stringify(this.cause)}`;
   }
