@@ -61,7 +61,7 @@ export const getUsers: RequestHandler = async (_req, res, next) => {
 export const updateUser: RequestHandler = async (req, res, next) => {
   try {
     const { email } = req.params;
-    update(email, req.body);
+    await update(email, req.body);
 
     res.json({
       success: true,

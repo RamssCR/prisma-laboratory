@@ -11,7 +11,7 @@ import { Router } from 'express';
 
 export const router = Router();
 
-router.post('/register', validate(userSchema), createUser);
+router.post('/', validate(userSchema), createUser);
 router.get('/', getUsers);
 router.patch(
   '/:email',

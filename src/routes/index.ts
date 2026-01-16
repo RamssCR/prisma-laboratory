@@ -3,4 +3,4 @@ import { router as userRouter } from '#routes/user';
 
 export const router = Router();
 
-router.use('/auth', userRouter);
+router.use('/users', userRouter);
