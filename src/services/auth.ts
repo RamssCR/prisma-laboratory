@@ -9,8 +9,8 @@ import {
   JWT_REFRESH_EXPIRES_IN,
 } from '#config/environment';
 import type { SignOptions } from 'jsonwebtoken';
-import { create as createSession } from './session';
-import { tokenEncoder } from '#helpers/tokenEncoder';
+import { create as createSession, revoke } from './session';
+import { tokenDecoder, tokenEncoder } from '#helpers/tokenEncoder';
 import { compareValue } from '#libs/bcrypt';
 
 type Tokens = {
@@ -36,6 +36,13 @@ export const register = async (
 
   const user = await createUser(data);
   return { user, tokens: await generateTokens({ id: user.id }) };
+};
+
+export const logout = async (token: string): Promise<void> => {
+  const decoded = tokenDecoder(token);
+  if (!decoded?.id) throw new Error('Invalid token');
+
+  await revoke(decoded.id);
 };
 
 export const generateTokens = async (payload: {

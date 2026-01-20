@@ -2,6 +2,7 @@ import type { RequestHandler } from 'express';
 import {
   register as registerService,
   login as loginService,
+  logout as logoutService,
 } from '#services/auth';
 import { NODE_ENV } from '#config/environment';
 import { ONE_DAY, SEVEN_DAYS } from '#utils/constants';
@@ -41,7 +42,7 @@ export const login: RequestHandler = async (req, res, next) => {
         secure: NODE_ENV === 'production',
         maxAge: ONE_DAY,
       })
-      .cookie('refeshTokeb', tokens.refreshToken, {
+      .cookie('refreshToken', tokens.refreshToken, {
         httpOnly: true,
         secure: NODE_ENV === 'production',
         maxAge: SEVEN_DAYS,
@@ -51,6 +52,19 @@ export const login: RequestHandler = async (req, res, next) => {
         message: 'Logged in successfully',
         data: { user, tokens },
       });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const logout: RequestHandler = async (req, res, next) => {
+  try {
+    const { refreshToken } = req.cookies;
+    await logoutService(refreshToken);
+    res
+      .clearCookie('accessToken')
+      .clearCookie('refreshToken')
+      .json({ success: true, message: 'Logged out successfully', data: null });
   } catch (error) {
     next(error);
   }

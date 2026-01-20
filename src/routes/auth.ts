@@ -1,5 +1,6 @@
-import { login, register } from '#controllers/auth';
+import { login, logout, register } from '#controllers/auth';
 import { validate } from '#middlewares/schema';
+import { verifyToken } from '#middlewares/verifyToken';
 import { userSchema } from '#schemas/user';
 import { Router } from 'express';
 
@@ -11,3 +12,4 @@ router.post(
   validate(userSchema.pick({ email: true, password: true })),
   login,
 );
+router.post('/logout', verifyToken, logout);
