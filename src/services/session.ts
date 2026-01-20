@@ -19,3 +19,10 @@ export const create = async (
 
   return token;
 };
+
+export const revoke = async (id: number): Promise<void> => {
+  await prisma.session.update({
+    where: { id },
+    data: { revoked: true, revokedAt: new Date() },
+  });
+};

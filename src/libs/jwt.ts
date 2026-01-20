@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-type DecodedToken<T> = T & jwt.JwtPayload;
+export type DecodedToken<T> = T & jwt.JwtPayload;
 
 export const createToken = (
   payload: string | object | Buffer,
