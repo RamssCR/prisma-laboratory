@@ -1,4 +1,4 @@
-import { login, logout, register } from '#controllers/auth';
+import { login, logout, profile, refresh, register } from '#controllers/auth';
 import { validate } from '#middlewares/schema';
 import { verifyToken } from '#middlewares/verifyToken';
 import { userSchema } from '#schemas/user';
@@ -13,3 +13,5 @@ router.post(
   login,
 );
 router.post('/logout', verifyToken, logout);
+router.post('/refresh', verifyToken, refresh);
+router.get('/profile', verifyToken, profile);
