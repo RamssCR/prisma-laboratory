@@ -9,6 +9,16 @@ import {
 import { NODE_ENV } from '#config/environment';
 import { ONE_DAY, SEVEN_DAYS } from '#utils/constants';
 
+/**
+ * Registra un nuevo usuario en la base de datos
+ * @param req - Objeto de solicitud de Express
+ * @param res - Objeto de respuesta de Express
+ * @param next - Funcion para manejor de errores
+ * @returns Usuario registrado junto con tokens de autenticacion
+ * @example
+ * // Solicitud POST a /api/auth/register
+ * // Respuesta: { "success": true, "data": { user: {...}, tokens: {...} } }
+ */
 export const register: RequestHandler = async (req, res, next) => {
   try {
     const { tokens, user } = await registerService(req.body);
@@ -34,6 +44,16 @@ export const register: RequestHandler = async (req, res, next) => {
   }
 };
 
+/**
+ * Devuelve el perfil del usuario autenticado
+ * @param req - Objeto de solicitud de Express
+ * @param res - Objeto de respuesta de Express
+ * @param next - Funcion para manejor de errores
+ * @returns Perfil del usuario autenticado
+ * @example
+ * // Solicitud GET a /api/auth/profile
+ * // Respuesta: { "success": true, "data": {...} }
+ */
 export const profile: RequestHandler = async (req, res, next) => {
   try {
     const id = req.user?.id as number;
@@ -48,7 +68,16 @@ export const profile: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
-
+/**
+ * Inicia sesion de un usuario existente
+ * @param req - Objeto de solicitud de Express
+ * @param res - Objeto de respuesta de Express
+ * @param next - Funcion para manejor de errores
+ * @returns Usuario autenticado junto con tokens
+ * @example
+ * // Solicitud POST a /api/auth/login
+ * // Respuesta: { "success": true, "data": { user: {...}, tokens: {...} } }
+ */
 export const login: RequestHandler = async (req, res, next) => {
   try {
     const { tokens, user } = await loginService(req.body);
@@ -74,6 +103,16 @@ export const login: RequestHandler = async (req, res, next) => {
   }
 };
 
+/**
+ * Refresca los tokens de autenticacion del usuario
+ * @param req - Objeto de solicitud de Express
+ * @param res - Objeto de respuesta de Express
+ * @param next - Funcion para manejor de errores
+ * @returns Nuevos tokens de autenticacion
+ * @example
+ * // Solicitud POST a /api/auth/refresh
+ * // Respuesta: { "success": true, "data": { ... } }
+ */
 export const refresh: RequestHandler = async (req, res, next) => {
   try {
     const id = req.user?.id as number;
@@ -101,6 +140,16 @@ export const refresh: RequestHandler = async (req, res, next) => {
   }
 };
 
+/**
+ * Cierra la sesion del usuario autenticado
+ * @param req - Objeto de solicitud de Express
+ * @param res - Objeto de respuesta de Express
+ * @param next - Funcion para manejor de errores
+ * @returns Mensaje de exito
+ * @example
+ * // Solicitud POST a /api/auth/logout
+ * // Respuesta: { "success": true, "data": null }
+ */
 export const logout: RequestHandler = async (req, res, next) => {
   try {
     const { refreshToken } = req.cookies;

@@ -2,6 +2,13 @@ import jwt from 'jsonwebtoken';
 
 export type DecodedToken<T> = T & jwt.JwtPayload;
 
+/**
+ * Crea un token JWT firmado
+ * @param payload - El contenido a codificar en el token (string, objeto o Buffer)
+ * @param secret - La clave secreta utilizada para firmar el token
+ * @param options - Opciones adicionales de configuración para la firma (expiración, algoritmo, etc.)
+ * @returns Promise que se resuelve con el token JWT firmado como string
+ */
 export const createToken = (
   payload: string | object | Buffer,
   secret: jwt.Secret,
@@ -15,6 +22,12 @@ export const createToken = (
     }
   });
 
+/**
+ * Decodifica un token JWT
+ * @param token - El token JWT a decodificar
+ * @param secret - La clave secreta utilizada para verificar el token
+ * @returns Promise que se resuelve con el contenido decodificado del token
+ */
 export const decodeToken = <T>(
   token: string,
   secret: jwt.Secret | jwt.PublicKey,

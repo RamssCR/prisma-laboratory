@@ -1,5 +1,5 @@
 /**
- * Types related to JWT payloads.
+ * Tipos relacionados con los payloads de JWT.
  * @file src/types/jwt.d.ts
  */
 export type Payload = {
