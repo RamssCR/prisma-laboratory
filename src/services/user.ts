@@ -24,6 +24,31 @@ export const create = async (data: UserSchema) =>
 export const findMany = () => prisma.user.findMany();
 
 /**
+ * Busca un usuario por su email
+ * @param email - Correo electronico
+ * @returns Usuario existente
+ * @example
+ * await findByEmail('alejo@email.com')
+ * // returns { id: 1, name: 'alejo', email: 'alejo@email.com', ...}
+ */
+export const findByEmail = (email: string) =>
+  prisma.user.findUnique({ where: { email } });
+
+/**
+ * Busca un usuario por su id
+ * @param id numero de usuario en base de datos
+ * @returns Unico usuario encontrado
+ * @example
+ * await findUnique(1)
+ * // returns { id: 1, name: 'alejo', email: '
+ */
+export const findUnique = (id: number) =>
+  prisma.user.findUnique({
+    where: { id },
+    omit: { password: true, createdAt: true, updatedAt: true },
+  });
+
+/**
  * Actualiza un usuario por su email
  * @param email - Email del usuario
  * @param data - Informacion a actualiza
