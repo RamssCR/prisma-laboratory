@@ -46,6 +46,7 @@ model Vehicle {
 model Brand {
   id Int @id @default(autoincrement())
   name String @db.Text
+  slug String @unique @db.Text
   active Boolean @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
@@ -57,6 +58,7 @@ model Brand {
 model Category {
   id Int @id @default(autoincrement())
   name String @db.Text
+  slug String @unique @db.Text
   active Boolean @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
@@ -68,6 +70,7 @@ model Product {
   id Int @id @default(autoincrement())
   sku String @unique
   name String @db.Text
+  slug String @unique @db.Text
   price Float @db.DoublePrecision
   minStock Int @default(5) 
   category Category @relation(fields: [categoryId], references: [id])
