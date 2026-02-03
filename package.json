@@ -4,6 +4,8 @@
   "description": "A laboratory project using Prisma ORM to explore database management in constrast to sequelize.",
   "main": "src/app.ts",
   "scripts": {
+    "db:seed": "npx prisma db seed",
+    "db:reset": "npx prisma migrate reset --force && npx prisma db seed",
     "start": "node dist/app.js",
     "dev": "tsx -r tsconfig-paths/register --watch --env-file-if-exists=.env src/app.ts",
     "build": "tsc",

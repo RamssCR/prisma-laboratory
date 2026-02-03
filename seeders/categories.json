@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Motor y Cilindrada",
+    "slug": "motor-cilindrada"
+  },
+  {
+    "name": "Sistema de Transmisión",
+    "slug": "sistema-transmision"
+  },
+  {
+    "name": "Frenos y Embrague",
+    "slug": "frenos-embrague"
+  },
+  {
+    "name": "Sistema Eléctrico",
+    "slug": "sistema-electrico"
+  },
+  {
+    "name": "Suspensión y Amortiguadores",
+    "slug": "suspension-amortiguadores"
+  },
+  {
+    "name": "Ruedas y Llantas",
+    "slug": "ruedas-llantas"
+  },
+  {
+    "name": "Lubricantes y Fluidos",
+    "slug": "lubricantes-fluidos"
+  },
+  {
+    "name": "Filtros",
+    "slug": "filtros"
+  },
+  {
+    "name": "Correas y Cadenas",
+    "slug": "correas-cadenas"
+  },
+  {
+    "name": "Cojinetes y Rodamientos",
+    "slug": "cojinetes-rodamientos"
+  },
+  {
+    "name": "Carburación y Combustible",
+    "slug": "carburacion-combustible"
+  },
+  {
+    "name": "Escape y Silenciadores",
+    "slug": "escape-silenciadores"
+  },
+  {
+    "name": "Sistema de Refrigeración",
+    "slug": "sistema-refrigeracion"
+  },
+  {
+    "name": "Encendido y Bujías",
+    "slug": "encendido-bujias"
+  },
+  {
+    "name": "Dirección y Geometría",
+    "slug": "direccion-geometria"
+  },
+  {
+    "name": "Parachoques y Protecciones",
+    "slug": "parachoques-protecciones"
+  },
+  {
+    "name": "Tapicería y Asientos",
+    "slug": "tapiceria-asientos"
+  },
+  {
+    "name": "Cristales y Espejos",
+    "slug": "cristales-espejos"
+  },
+  {
+    "name": "Iluminación",
+    "slug": "iluminacion"
+  },
+  {
+    "name": "Accesorios y Complementos",
+    "slug": "accesorios-complementos"
+  },
+  {
+    "name": "Herramientas y Equipamiento",
+    "slug": "herramientas-equipamiento"
+  },
+  {
+    "name": "Piezas de Carrocería",
+    "slug": "piezas-carroceria"
+  },
+  {
+    "name": "Aditivos y Tratamientos",
+    "slug": "aditivos-tratamientos"
+  },
+  {
+    "name": "Juntas y Sellos",
+    "slug": "juntas-sellos"
+  },
+  {
+    "name": "Válvulas y Distribución",
+    "slug": "valvulas-distribucion"
+  }
+]

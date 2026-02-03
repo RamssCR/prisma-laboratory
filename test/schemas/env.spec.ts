@@ -14,6 +14,7 @@ describe('Env Schema', () => {
       LIMIT_MESSAGE: 'Too many requests, please try again later.',
       ALLOWED_ORIGINS: 'http://localhost:3000, http://example.com',
       DEBUG: 'true',
+      DATABASE_URL: 'http://localhost:3000',
     };
     expect(() => env.parse(validEnv)).not.toThrow();
   });
@@ -25,6 +26,7 @@ describe('Env Schema', () => {
       JWT_SECRET: 'supersecret',
       JWT_REFRESH_SECRET: 'supersecretrefresh',
       DEBUG: 'false',
+      DATABASE_URL: 'http://localhost:3000',
     };
     const parsed = env.parse(debugEnv);
     expect(parsed.DEBUG).toBe(false);

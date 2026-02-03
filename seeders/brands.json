@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Victory",
+    "slug": "victory"
+  },
+  {
+    "name": "Honda",
+    "slug": "honda"
+  },
+  {
+    "name": "Yamaha",
+    "slug": "yamaha"
+  },
+  {
+    "name": "Suzuki",
+    "slug": "suzuki"
+  },
+  {
+    "name": "Kawasaki",
+    "slug": "kawasaki"
+  },
+  {
+    "name": "Ducati",
+    "slug": "ducati"
+  },
+  {
+    "name": "BMW Motorrad",
+    "slug": "bmw-motorrad"
+  },
+  {
+    "name": "Triumph",
+    "slug": "triumph"
+  },
+  {
+    "name": "Harley-Davidson",
+    "slug": "harley-davidson"
+  },
+  {
+    "name": "KTM",
+    "slug": "ktm"
+  },
+  {
+    "name": "Aprilia",
+    "slug": "aprilia"
+  },
+  {
+    "name": "MV Agusta",
+    "slug": "mv-agusta"
+  },
+  {
+    "name": "Royal Enfield",
+    "slug": "royal-enfield"
+  },
+  {
+    "name": "Benelli",
+    "slug": "benelli"
+  },
+  {
+    "name": "Hero",
+    "slug": "hero"
+  },
+  {
+    "name": "Bajaj",
+    "slug": "bajaj"
+  },
+  {
+    "name": "Piaggio",
+    "slug": "piaggio"
+  },
+  {
+    "name": "Vespa",
+    "slug": "vespa"
+  },
+  {
+    "name": "Moto Guzzi",
+    "slug": "moto-guzzi"
+  },
+  {
+    "name": "Norton",
+    "slug": "norton"
+  },
+  {
+    "name": "Indian Motorcycle",
+    "slug": "indian-motorcycle"
+  },
+  {
+    "name": "CFMOTO",
+    "slug": "cfmoto"
+  },
+  {
+    "name": "Husqvarna",
+    "slug": "husqvarna"
+  },
+  {
+    "name": "GasGas",
+    "slug": "gasgas"
+  },
+  {
+    "name": "Keeway",
+    "slug": "keeway"
+  },
+  {
+    "name": "Kymco",
+    "slug": "kymco"
+  },
+  {
+    "name": "Polaris",
+    "slug": "polaris"
+  },
+  {
+    "name": "Bosch",
+    "slug": "bosch"
+  },
+  {
+    "name": "NGK",
+    "slug": "ngk"
+  },
+  {
+    "name": "Denso",
+    "slug": "denso"
+  },
+  {
+    "name": "Motul",
+    "slug": "motul"
+  },
+  {
+    "name": "Castrol",
+    "slug": "castrol"
+  },
+  {
+    "name": "SKF",
+    "slug": "skf"
+  },
+  {
+    "name": "K&N",
+    "slug": "k-and-n"
+  },
+  {
+    "name": "Brembo",
+    "slug": "brembo"
+  },
+  {
+    "name": "Repsol",
+    "slug": "repsol"
+  },
+  {
+    "name": "Pirelli",
+    "slug": "pirelli"
+  },
+  {
+    "name": "Michelin",
+    "slug": "michelin"
+  }
+]
