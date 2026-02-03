@@ -1,26 +1,27 @@
-import { PrismaClient } from '../generated/prisma/client';
-import { PrismaPg } from '@prisma/adapter-pg';
+import brandJson from './brands.json' with { type: 'json' };
+import categoryJson from './categories.json' with { type: 'json' };
+import { createMany as category } from '#services/category';
+import { createMany as brand } from '#services/brand';
+import { prisma } from '#config/db';
 
-const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
-const prisma = new PrismaClient({ adapter: adapter });
+/**
+ * Bloque de ejecución principal del seeding de base de datos.
+ * Este script realiza las siguientes operaciones:
+ * - Limpia las tablas `brand` y `category` mediante `deleteMany()`
+ * - Pobla las tablas con datos desde archivos JSON importados
+ * @async
+ * @throws Termina el proceso con código 1 si ocurre un error
+ */
+try {
+  console.log('Iniciando seeding');
+  await prisma.brand.deleteMany();
+  await prisma.category.deleteMany();
 
-const seeder = async () => {
-  const brand = await prisma.brand.upsert({
-    where: { slug: 'victory' },
-    update: {},
-    create: {
-      name: 'Victory',
-      slug: 'victory',
-    },
-  });
-  console.log(brand);
-};
-seeder()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+  await brand(brandJson);
+  await category(categoryJson);
+  console.log('Seeding ejecutado exitosamente');
+} catch (e) {
+  console.error(e);
+  await prisma.$disconnect();
+  process.exit(1);
+}
