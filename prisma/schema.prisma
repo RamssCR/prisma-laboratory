@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -14,112 +8,103 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  name String? @db.Text
-  password String @db.Text
-  role Role @default(USER)
-  active Boolean @default(true)
-  
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
-
-  sessions Session[]
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String?
+  password  String
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  active    Boolean   @default(true)
+  sessions  Session[]
 }
 
 model Vehicle {
-  id Int @id @default(autoincrement())
-  brandId Int @db.Integer
-  brand Brand @relation(fields: [brandId], references: [id])
-  model String @db.Text
-  year Int
-  displacement Int?
-  active Boolean @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
-
+  id              Int                  @id @default(autoincrement())
+  brandId         Int
+  model           String
+  year            Int
+  displacement    Int?
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @default(now()) @updatedAt
+  active          Boolean              @default(true)
   compatibilities ProductCompability[]
+  brand           Brand                @relation(fields: [brandId], references: [id])
 
   @@unique([brandId, model, year])
 }
 
 model Brand {
-  id Int @id @default(autoincrement())
-  name String @db.Text
-  slug String @unique @db.Text
-  active Boolean @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
-
-  products Product[]
-  vehicles Vehicle[]
+  id        Int       @id @default(autoincrement())
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  active    Boolean   @default(true)
+  slug      String    @unique
+  products  Product[]
+  vehicles  Vehicle[]
 }
 
 model Category {
-  id Int @id @default(autoincrement())
-  name String @db.Text
-  slug String @unique @db.Text
-  active Boolean @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
-  
-  products Product[]
+  id        Int       @id @default(autoincrement())
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  active    Boolean   @default(true)
+  slug      String    @unique
+  products  Product[]
 }
 
 model Product {
-  id Int @id @default(autoincrement())
-  sku String @unique
-  name String @db.Text
-  slug String @unique @db.Text
-  price Float @db.DoublePrecision
-  minStock Int @default(5) 
-  category Category @relation(fields: [categoryId], references: [id])
-  categoryId Int @db.Integer 
-  brand Brand @relation(fields: [brandId], references: [id])
-  brandId Int @db.Integer
-  active Boolean @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
-
-  movements InventoryMovement[]
+  id            Int                  @id @default(autoincrement())
+  sku           String               @unique
+  name          String
+  price         Float
+  minStock      Int                  @default(5)
+  categoryId    Int
+  brandId       Int
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @default(now()) @updatedAt
+  active        Boolean              @default(true)
+  slug          String               @unique
+  movements     InventoryMovement[]
+  brand         Brand                @relation(fields: [brandId], references: [id])
+  category      Category             @relation(fields: [categoryId], references: [id])
   compatibility ProductCompability[]
 }
 
 model InventoryMovement {
-  id Int @id @default(autoincrement())
-  productId Int @db.Integer
-  product Product @relation(fields: [productId], references: [id])
-  quantity Int @db.Integer
-  type String @db.Text
-  active Boolean @default(true)
+  id        Int      @id @default(autoincrement())
+  productId Int
+  quantity  Int
+  type      String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  active    Boolean  @default(true)
+  product   Product  @relation(fields: [productId], references: [id])
 }
 
 model ProductCompability {
-  id Int @id @default(autoincrement())
-  productId Int @db.Integer
-  vehicleId Int @db.Integer
-  active Boolean @default(true)
+  id        Int      @id @default(autoincrement())
+  productId Int
+  vehicleId Int
+  notes     String?
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
-
-  product Product @relation(fields: [productId], references: [id])
-  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
-
-  notes String? @db.Text
-
+  updatedAt DateTime @default(now()) @updatedAt
+  active    Boolean  @default(true)
+  product   Product  @relation(fields: [productId], references: [id])
+  vehicle   Vehicle  @relation(fields: [vehicleId], references: [id])
 }
 
 model Session {
-  id Int @id @default(autoincrement())
-  token String @unique
-  revoked Boolean @default(false)
+  id        Int       @id @default(autoincrement())
+  token     String    @unique
+  revoked   Boolean   @default(false)
   expiresAt DateTime
   revokedAt DateTime?
-  createdAt DateTime @default(now())
-  userId Int @db.Integer
-  user User @relation(fields: [userId], references: [id])
+  createdAt DateTime  @default(now())
+  userId    Int
+  user      User      @relation(fields: [userId], references: [id])
 }
 
 enum Role {
