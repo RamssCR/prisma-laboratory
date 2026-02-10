@@ -1,8 +1,13 @@
 import brandJson from './brands.json' with { type: 'json' };
 import categoryJson from './categories.json' with { type: 'json' };
+import productJson from './products.json' with { type: 'json' };
+import userJson from './users.json' with { type: 'json' };
 import { createMany as category } from '#services/category';
 import { createMany as brand } from '#services/brand';
+import { createMany as product } from '#services/product';
+import { create as user } from '#services/user';
 import { prisma } from '#config/db';
+import type { UserSchema } from '#schemas/user';
 
 /**
  * Bloque de ejecución principal del seeding de base de datos.
@@ -16,9 +21,13 @@ try {
   console.log('Iniciando seeding');
   await prisma.brand.deleteMany();
   await prisma.category.deleteMany();
+  await prisma.product.deleteMany();
+  await prisma.user.deleteMany();
 
   await brand(brandJson);
   await category(categoryJson);
+  await product(productJson);
+  await user(userJson as UserSchema);
   console.log('Seeding ejecutado exitosamente');
 } catch (e) {
   console.error(e);

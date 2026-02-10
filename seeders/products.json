@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Kit de Pistón y Anillos Yamaha XT660",
+    "sku": "YAM-XT660-PIST",
+    "price": 450000,
+    "minStock": 3,
+    "active": true,
+    "categoryId": 1,
+    "brandId": 3
+  },
+  {
+    "name": "Pastillas de Freno Delanteras Honda CB500",
+    "sku": "HON-CB500-BRK",
+    "price": 125000,
+    "minStock": 10,
+    "active": true,
+    "categoryId": 3,
+    "brandId": 2
+  },
+  {
+    "name": "Aceite Sintético 4T Victory Black",
+    "sku": "VIC-OIL-4TSYN",
+    "price": 48500,
+    "minStock": 24,
+    "active": true,
+    "categoryId": 7,
+    "brandId": 1
+  },
+  {
+    "name": "Filtro de Aceite Original Suzuki DR650",
+    "sku": "SUZ-DR650-FLT",
+    "price": 38000,
+    "minStock": 15,
+    "active": true,
+    "categoryId": 8,
+    "brandId": 4
+  },
+  {
+    "name": "Kit de Arrastre Kawasaki Ninja 400",
+    "sku": "KAW-N400-KIT",
+    "price": 320000,
+    "minStock": 5,
+    "active": true,
+    "categoryId": 2,
+    "brandId": 5
+  },
+  {
+    "name": "Bujía de Iridium CR9EIX",
+    "sku": "NGK-SUZ-CR9EIX",
+    "price": 65000,
+    "minStock": 20,
+    "active": true,
+    "categoryId": 14,
+    "brandId": 4
+  },
+  {
+    "name": "Empaque de Culata Pulsar NS 200",
+    "sku": "BAJ-NS200-EMP",
+    "price": 28000,
+    "minStock": 10,
+    "active": true,
+    "categoryId": 1,
+    "brandId": 16
+  },
+  {
+    "name": "Kit de Cunas de Dirección KTM Duke",
+    "sku": "KTM-DK200-CUN",
+    "price": 185000,
+    "minStock": 4,
+    "active": true,
+    "categoryId": 15,
+    "brandId": 10
+  },
+  {
+    "name": "Llanta Trasera 140/70-17 Pilot Street",
+    "sku": "MIC-YAM-14070",
+    "price": 420000,
+    "minStock": 6,
+    "active": true,
+    "categoryId": 6,
+    "brandId": 3
+  },
+  {
+    "name": "Kit de Discos de Clutch Honda CB190R",
+    "sku": "HON-CB190-CLU",
+    "price": 145000,
+    "minStock": 8,
+    "active": true,
+    "categoryId": 3,
+    "brandId": 2
+  },
+  {
+    "name": "Cadena de Tracción DID 520 Dorada",
+    "sku": "DID-KAW-520GD",
+    "price": 290000,
+    "minStock": 5,
+    "active": true,
+    "categoryId": 2,
+    "brandId": 5
+  },
+  {
+    "name": "Retenedores de Suspensión Victory Black",
+    "sku": "VIC-BLK-RETEN",
+    "price": 42000,
+    "minStock": 12,
+    "active": true,
+    "categoryId": 5,
+    "brandId": 1
+  }
+]
