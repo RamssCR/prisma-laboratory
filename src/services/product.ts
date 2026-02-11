@@ -56,7 +56,7 @@ export const update = (id: number, data: Partial<ProductSchema>) =>
  * await findMany("yamaha")
  * // returns - data: [{...}, {...}]
  */
-export const findMany = (searchItem?: SearchQuery['search']) =>
+export const findMany = (searchItem?: SearchQuery['search'], mov?: boolean) =>
   prisma.product.findMany({
     where: {
       active: true,
@@ -79,6 +79,12 @@ export const findMany = (searchItem?: SearchQuery['search']) =>
     include: {
       brand: { select: { name: true } },
       category: { select: { name: true } },
+      movements: mov
+        ? {
+            where: { active: true },
+            select: { quantity: true },
+          }
+        : {},
     },
   });
 
