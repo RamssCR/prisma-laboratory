@@ -1,4 +1,6 @@
 import { afterEach, vi } from 'vitest';
+import { mockReset } from 'vitest-mock-extended';
+import { prismaMock } from './prismaMock';
 
 // Cleaners run after each test (no need to add them manually)
 afterEach(() => {
@@ -6,6 +8,7 @@ afterEach(() => {
   vi.clearAllMocks();
   vi.resetModules();
   vi.useRealTimers();
+  mockReset(prismaMock);
 });
 
 vi.stubEnv('NODE_ENV', 'test');
