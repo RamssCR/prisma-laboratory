@@ -72,6 +72,15 @@ export const findMany = (searchItem?: SearchQuery['search'], mov?: boolean) =>
                   slug: { contains: searchItem, mode: 'insensitive' },
                 },
               },
+              {
+                compatibility: {
+                  some: {
+                    vehicle: {
+                      model: { contains: searchItem, mode: 'insensitive' },
+                    },
+                  },
+                },
+              },
             ],
           }
         : {}),
