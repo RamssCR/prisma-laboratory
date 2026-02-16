@@ -1,17 +1,22 @@
 import { describe, test, expect } from 'vitest';
 import { prismaMock } from '../prismaMock';
-import { create, createMany } from '#services/category';
+import {
+  create,
+  createMany,
+  findMany,
+  findUnique,
+  update,
+} from '#services/category';
 
+const category = {
+  id: 1,
+  name: 'Aceite',
+  slug: 'aceite',
+  active: true,
+  createdAt: new Date('2026-01-27T14:17:07.954Z'),
+  updatedAt: new Date('2026-01-27T14:17:07.954Z'),
+};
 describe('Category Service', () => {
-  const category = {
-    id: 1,
-    name: 'Aceite',
-    slug: 'aceite',
-    active: true,
-    createdAt: new Date('2026-01-27T14:17:07.954Z'),
-    updatedAt: new Date('2026-01-27T14:17:07.954Z'),
-  };
-
   test('Debe de crear una categoria', async () => {
     prismaMock.category.create.mockResolvedValue(category);
 
@@ -65,5 +70,57 @@ describe('Category Service', () => {
       },
     ];
     prismaMock.category.findMany.mockResolvedValue(categories);
+    const result = await findMany();
+
+    expect(prismaMock.category.findMany).toHaveBeenCalledTimes(1);
+    expect(prismaMock.category.findMany).toHaveBeenLastCalledWith({
+      where: { active: true },
+    });
+    expect(result).toEqual(categories);
+  });
+
+  test('debe retornar un arreglo vacío si no hay categorías en la base de datos', async () => {
+    prismaMock.category.findMany.mockResolvedValue([]);
+    const result = await findMany();
+
+    expect(prismaMock.category.findMany).toHaveBeenCalledWith({
+      where: { active: true },
+    });
+    expect(result).toEqual([]);
+  });
+
+  test('Debe devolver una categoria por su id', async () => {
+    prismaMock.category.findUnique.mockResolvedValue(category);
+    const result = await findUnique(1);
+    expect(prismaMock.category.findUnique).toHaveBeenCalledTimes(1);
+    expect(prismaMock.category.findUnique).toHaveBeenCalledWith({
+      where: { id: 1 },
+    });
+    expect(result).toEqual(category);
+  });
+
+  test('Debe actualizar la categoria por su id', async () => {
+    prismaMock.category.update.mockResolvedValue({
+      id: 1,
+      name: 'Aceite',
+      slug: 'aceite',
+      active: true,
+      createdAt: new Date('2026-01-27T14:17:07.954Z'),
+      updatedAt: new Date('2026-01-27T14:17:07.954Z'),
+    });
+    await update(1, category);
+
+    expect(prismaMock.category.update).toHaveBeenCalledTimes(1);
+    expect(prismaMock.category.update).toHaveBeenCalledWith({
+      where: { id: 1 },
+      data: {
+        id: 1,
+        name: 'Aceite',
+        slug: 'aceite',
+        active: true,
+        createdAt: new Date('2026-01-27T14:17:07.954Z'),
+        updatedAt: new Date('2026-01-27T14:17:07.954Z'),
+      },
+    });
   });
 });
