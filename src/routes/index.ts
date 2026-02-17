@@ -5,6 +5,8 @@ import { router as categoryRouter } from './category';
 import { router as brandRouter } from './brand';
 import { router as productRouter } from './product';
 import { router as inventoryRouter } from './inventory';
+import { router as vehicleRouter } from './vehicle';
+import { router as compatibilityRouter } from './compatibility';
 
 export const router = Router();
 
@@ -13,4 +15,6 @@ router.use('/brands', brandRouter);
 router.use('/categories', categoryRouter);
 router.use('/products', productRouter);
 router.use('/users', userRouter);
-router.use('/inventory', inventoryRouter);
+router.use('/inventories', inventoryRouter);
+router.use('/vehicles', vehicleRouter);
+router.use('/compatibilities', compatibilityRouter);

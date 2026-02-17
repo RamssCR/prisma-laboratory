@@ -1,0 +1,62 @@
+[
+  {
+    "model": "Pulsar NS 200 FI",
+    "year": 2024,
+    "displacement": 199,
+    "brandId": 16
+  },
+  {
+    "model": "Gixxer 250 SF",
+    "year": 2023,
+    "displacement": 249,
+    "brandId": 4
+  },
+  {
+    "model": "Xtz 150",
+    "year": 2025,
+    "displacement": 149,
+    "brandId": 3
+  },
+  {
+    "model": "Duke 390 NG",
+    "year": 2024,
+    "displacement": 373,
+    "brandId": 10
+  },
+  {
+    "model": "CB 190R",
+    "year": 2022,
+    "displacement": 184,
+    "brandId": 2
+  },
+  {
+    "model": "Ninja 400 KRT",
+    "year": 2023,
+    "displacement": 399,
+    "brandId": 5
+  },
+  {
+    "model": "MRX 150",
+    "year": 2024,
+    "displacement": 149,
+    "brandId": 1
+  },
+  {
+    "model": "R 1250 GS Adventure",
+    "year": 2024,
+    "displacement": 1254,
+    "brandId": 7
+  },
+  {
+    "model": "Himalayan 450",
+    "year": 2024,
+    "displacement": 452,
+    "brandId": 13
+  },
+  {
+    "model": "Scrambler 800 Icon",
+    "year": 2023,
+    "displacement": 803,
+    "brandId": 6
+  }
+]
