@@ -8,7 +8,7 @@ import type { PrismaClient } from 'generated/prisma/client';
  */
 export const mockPrisma = mockDeep<PrismaClient>();
 
-vi.mock('../src/config/db', () => ({
+vi.mock('#config/db', () => ({
   prisma: mockPrisma,
   default: mockPrisma,
 }));
