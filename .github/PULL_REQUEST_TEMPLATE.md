@@ -4,11 +4,11 @@
 
 ## Tipo de cambio
 
-- [ ] Nueva funcionalidad  
-- [ ] Corrección de errores  
-- [ ] Mejoras en el rendimiento  
-- [ ] Refactorización  
-- [ ] Otros (especificar):  
+- [ ] Nueva funcionalidad
+- [ ] Corrección de errores
+- [ ] Mejoras en el rendimiento
+- [ ] Refactorización
+- [ ] Otros (especificar):
 
 ## ¿Cómo se probaron estos cambios?
 
@@ -20,9 +20,9 @@
 
 ## Checklist
 
-- [x] Los cambios han sido probados en el entorno local.  
-- [x] Los campos en ambos formularios funcionan correctamente y sin errores.  
-- [x] No se detectaron regresiones en otras funcionalidades relacionadas.  
+- [x] Los cambios han sido probados en el entorno local.
+- [x] Los campos en ambos formularios funcionan correctamente y sin errores.
+- [x] No se detectaron regresiones en otras funcionalidades relacionadas.
 
 ## Información adicional
 
