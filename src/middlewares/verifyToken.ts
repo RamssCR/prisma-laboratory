@@ -10,9 +10,11 @@ import status from 'http-status';
  * @returns Token de acceso o null si no existe
  */
 const getTokenFromCookies = (req: Request): string | null => {
-  const { accessToken } = req.cookies;
-  return accessToken && accessToken !== 'null' && accessToken !== 'undefined'
-    ? accessToken
+  const tokenFromCookie = req.cookies?.accessToken ?? req.cookies?.token;
+  return tokenFromCookie &&
+    tokenFromCookie !== 'null' &&
+    tokenFromCookie !== 'undefined'
+    ? tokenFromCookie
     : null;
 };
 
@@ -23,7 +25,7 @@ const getTokenFromCookies = (req: Request): string | null => {
  */
 const getToken = (req: Request): string | null => {
   const headerToken = req.headers?.authorization?.startsWith('Bearer ')
-    ? req.headers.authorization.split('')[1]
+    ? req.headers.authorization.split(' ')[1]
     : null;
 
   const cookieToken = getTokenFromCookies(req);
