@@ -3,13 +3,13 @@ import { describe, expect, test, vi } from 'vitest';
 import { validate } from '#middlewares/schema';
 import { z } from 'zod';
 
-describe('Schema validation middleware', () => {
+describe('Middleware de validación de esquema', () => {
   const schema = z.object({
     name: z.string(),
     age: z.coerce.number().min(18),
   });
 
-  test('validates a valid request body correctly', () => {
+  test('valida correctamente un cuerpo de solicitud válido', () => {
     const req = createRequest({
       method: 'POST',
       url: '/user',
@@ -26,7 +26,7 @@ describe('Schema validation middleware', () => {
     expect(next).toHaveBeenCalled();
   });
 
-  test('responds with error for an invalid request body', () => {
+  test('responde con error para un cuerpo de solicitud inválido', () => {
     const req = createRequest({
       method: 'POST',
       url: '/user',
@@ -44,7 +44,7 @@ describe('Schema validation middleware', () => {
     expect(res.statusCode).toBe(400);
   });
 
-  test('validates correctly with partial mode', () => {
+  test('valida correctamente en modo parcial', () => {
     const req = createRequest({
       method: 'POST',
       url: '/user',
@@ -61,7 +61,7 @@ describe('Schema validation middleware', () => {
     expect(next).toHaveBeenCalled();
   });
 
-  test('validates query parameters correctly', () => {
+  test('valida correctamente los parámetros de consulta', () => {
     const req = createRequest({
       method: 'GET',
       url: '/user',
@@ -79,13 +79,13 @@ describe('Schema validation middleware', () => {
   });
 });
 
-describe('Middleware: query property and descriptor/getter behavior', () => {
+describe('Middleware: comportamiento de la propiedad query y descriptor/getter', () => {
   const schema = z.object({
     name: z.string(),
     age: z.coerce.number().min(18),
   });
 
-  test('defines query as an accessor (getter), enumerable and configurable, returns parsed value and resists assignment', () => {
+  test('define query como un accessor (getter), enumerable y configurable, retorna el valor parseado y resiste la asignación', () => {
     const next = vi.fn(),
       req = createRequest({
         method: 'GET',
@@ -111,12 +111,12 @@ describe('Middleware: query property and descriptor/getter behavior', () => {
   });
 });
 
-describe('Middleware: error handling', () => {
+describe('Middleware: manejo de errores', () => {
   const schema = z.object({
     name: z.string(),
     age: z.coerce.number().min(18),
   });
-  test('passes errors to next() when an exception occurs', () => {
+  test('pasa los errores a next() cuando ocurre una excepción', () => {
     const next = vi.fn((error) => {
       expect(error).toBeInstanceOf(Error);
     });

@@ -8,8 +8,8 @@ vi.mock('#libs/jwt', () => ({
   decodeToken: vi.fn(),
 }));
 
-describe('verifyToken Middleware', () => {
-  test('Should call next() if the token is valid', async () => {
+describe('Middleware verifyToken', () => {
+  test('Debe llamar a next() si el token es válido', async () => {
     vi.mocked(decodeToken).mockResolvedValue({
       id: 1,
       role: 'user',
@@ -26,7 +26,7 @@ describe('verifyToken Middleware', () => {
     expect(next).toHaveBeenCalled();
   });
 
-  test('Should respond with 401 if no token is provided', async () => {
+  test('Debe responder con 401 si no se proporciona token', async () => {
     const req = createRequest({
       cookies: {},
     });
@@ -37,7 +37,7 @@ describe('verifyToken Middleware', () => {
     expect(res.statusCode).toBe(401);
   });
 
-  test('Should respond with 401 if the token is invalid', async () => {
+  test('Debe responder con 401 si el token es inválido', async () => {
     const spiedLogger = vi.spyOn(logger, 'error').mockImplementation(vi.fn());
     vi.mocked(decodeToken).mockRejectedValue(new Error('Invalid token'));
     const req = createRequest({
@@ -54,7 +54,7 @@ describe('verifyToken Middleware', () => {
     );
   });
 
-  test('Should call next() if the token is valid in the header', async () => {
+  test('Debe llamar a next() si el token es válido en el encabezado', async () => {
     vi.mocked(decodeToken).mockResolvedValue({
       id: 2,
       role: 'admin',
@@ -69,7 +69,7 @@ describe('verifyToken Middleware', () => {
     expect(next).toHaveBeenCalled();
   });
 
-  test('does not logs non-Error exceptions', async () => {
+  test('No registra excepciones que no sean Error', async () => {
     vi.spyOn(logger, 'error').mockImplementation(vi.fn());
     vi.mocked(decodeToken).mockRejectedValue('Some string error');
     const req = createRequest({

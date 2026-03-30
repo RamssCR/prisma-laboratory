@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
 import { RequestError } from '#utils/requestError';
 
-describe('RequestError Class', () => {
-  test('should create an instance with default values', () => {
+describe('Clase RequestError', () => {
+  test('debe crear una instancia con valores por defecto', () => {
     const error = new RequestError('Default error', {});
     expect(error).toBeInstanceOf(RequestError);
     expect(error.message).toBe('Default error');
@@ -11,7 +11,7 @@ describe('RequestError Class', () => {
     expect(error.cause).toEqual({});
   });
 
-  test('should create an instance with custom values', () => {
+  test('debe crear una instancia con valores personalizados', () => {
     const error = new RequestError('Not Found', {
       status: 404,
       method: 'GET',
@@ -24,7 +24,7 @@ describe('RequestError Class', () => {
     expect(error.cause).toEqual({ resource: 'User' });
   });
 
-  test('toJSON method should return correct JSON representation', () => {
+  test('el método toJSON debe retornar la representación JSON correcta', () => {
     const error = new RequestError('Not Found', {
       status: 404,
       method: 'GET',
@@ -40,7 +40,7 @@ describe('RequestError Class', () => {
     });
   });
 
-  test('toString method should return correct string representation', () => {
+  test('el método toString debe retornar la representación en texto correcta', () => {
     const error = new RequestError('Not Found', {
       status: 404,
       method: 'GET',
@@ -52,13 +52,13 @@ describe('RequestError Class', () => {
     );
   });
 
-  test('should capture stack trace', () => {
+  test('debe capturar el seguimiento de pila', () => {
     const error = new RequestError('Stack trace test', {});
     expect(error.stack).toBeDefined();
     expect(error.stack).toContain('RequestError: Stack trace test');
   });
 
-  test('captureStackTrace should not throw if not available', () => {
+  test('captureStackTrace no debe lanzar error si no está disponible', () => {
     const originalCaptureStackTrace = Error.captureStackTrace;
     Error.captureStackTrace =
       undefined as unknown as typeof Error.captureStackTrace;
