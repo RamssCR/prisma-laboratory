@@ -7,6 +7,6 @@ describe('Name Schema', () => {
       name: 'John Doe',
     };
     const result = nameSchema.safeParse(validName);
-    expect(result.success).toBe(true);
+    expect(result.success).toBeTruthy();
   });
 });

@@ -10,6 +10,6 @@ describe('Inventory Schema', () => {
       active: true,
     };
     const result = inventorySchema.safeParse(validInventory);
-    expect(result.success).toBe(true);
+    expect(result.success).toBeTruthy();
   });
 });

@@ -10,6 +10,6 @@ describe('User Schema', () => {
       active: true,
     };
     const result = userSchema.safeParse(validUser);
-    expect(result.success).toBe(true);
+    expect(result.success).toBeTruthy();
   });
 });

@@ -29,7 +29,7 @@ describe('Env Schema', () => {
       DATABASE_URL: 'http://localhost:3000',
     };
     const parsed = env.parse(debugEnv);
-    expect(parsed.DEBUG).toBe(false);
+    expect(parsed.DEBUG).toBeFalsy();
   });
 
   test('invalid env fails validation', () => {

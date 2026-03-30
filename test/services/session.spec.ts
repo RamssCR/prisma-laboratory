@@ -4,7 +4,7 @@ import { SEVEN_DAYS } from '#utils/constants';
 import { prismaMock } from 'test/prismaMock';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
-vi.mock('#libs/bcrypt.ts', () => ({
+vi.mock('#libs/bcrypt', () => ({
   hashValue: vi.fn(),
 }));
 
