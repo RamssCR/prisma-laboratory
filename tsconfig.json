@@ -31,5 +31,5 @@
       "#seeders/*": ["seeders/*"]
     }
   },
-  "include": ["src", "test", "scripts", "migrations", "seeders"],
+  "include": ["src", "test", "scripts", "migrations", "seeders"]
 }
