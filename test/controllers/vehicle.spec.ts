@@ -13,7 +13,7 @@ import {
   update,
 } from '#services/vehicle';
 import { createRequest, createResponse } from 'node-mocks-http';
-import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 
 vi.mock('#services/vehicle', () => ({
   create: vi.fn(),
@@ -34,12 +34,8 @@ const mockVehicle = {
   active: true,
 };
 
-describe('Vehicle Controller', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
-
-  test('should create a new vehicle', async () => {
+describe('Controlador de vehículos', () => {
+  test('debería crear un nuevo vehículo', async () => {
     const req = createRequest({
       method: 'POST',
       url: '/api/vehicles',
@@ -68,7 +64,7 @@ describe('Vehicle Controller', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  test('should call next(error) when create fails', async () => {
+  test('debería llamar a next(error) cuando create falla', async () => {
     const req = createRequest({
       method: 'POST',
       url: '/api/vehicles',
@@ -85,7 +81,7 @@ describe('Vehicle Controller', () => {
     expect(next).toHaveBeenCalledWith(error);
   });
 
-  test('should return all vehicles', async () => {
+  test('debería retornar todos los vehículos', async () => {
     const req = createRequest({
       method: 'GET',
       url: '/api/vehicles',
@@ -108,7 +104,7 @@ describe('Vehicle Controller', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  test('should call next(error) when getVehicles fails', async () => {
+  test('debería llamar a next(error) cuando getVehicles falla', async () => {
     const req = createRequest({
       method: 'GET',
       url: '/api/vehicles',
@@ -124,7 +120,7 @@ describe('Vehicle Controller', () => {
     expect(next).toHaveBeenCalledWith(error);
   });
 
-  test('should return one vehicle by id', async () => {
+  test('debería retornar un vehículo por id', async () => {
     const req = createRequest({
       method: 'GET',
       url: '/api/vehicles/1',
@@ -147,7 +143,7 @@ describe('Vehicle Controller', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  test('should call next(error) when getVehicle fails', async () => {
+  test('debería llamar a next(error) cuando getVehicle falla', async () => {
     const req = createRequest({
       method: 'GET',
       url: '/api/vehicles/1',
@@ -164,7 +160,7 @@ describe('Vehicle Controller', () => {
     expect(next).toHaveBeenCalledWith(error);
   });
 
-  test('should update one vehicle by id', async () => {
+  test('debería actualizar un vehículo por id', async () => {
     const req = createRequest({
       method: 'PATCH',
       url: '/api/vehicles/1',
@@ -189,7 +185,7 @@ describe('Vehicle Controller', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  test('should call next(error) when updateVehicle fails', async () => {
+  test('debería llamar a next(error) cuando updateVehicle falla', async () => {
     const req = createRequest({
       method: 'PATCH',
       url: '/api/vehicles/1',
@@ -207,7 +203,7 @@ describe('Vehicle Controller', () => {
     expect(next).toHaveBeenCalledWith(error);
   });
 
-  test('should soft delete one vehicle by id', async () => {
+  test('debería hacer soft delete de un vehículo por id', async () => {
     const req = createRequest({
       method: 'DELETE',
       url: '/api/vehicles/1',
@@ -229,7 +225,7 @@ describe('Vehicle Controller', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  test('should call next(error) when deleteVehicle fails', async () => {
+  test('debería llamar a next(error) cuando deleteVehicle falla', async () => {
     const req = createRequest({
       method: 'DELETE',
       url: '/api/vehicles/1',
