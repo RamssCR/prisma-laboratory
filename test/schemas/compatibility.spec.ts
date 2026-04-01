@@ -10,6 +10,6 @@ describe('Compatibility schema', () => {
       active: true,
     };
     const result = compatibilitySchema.safeParse(validCompatibility);
-    expect(result.success).toBe(true);
+    expect(result.success).toBeTruthy();
   });
 });

@@ -11,6 +11,6 @@ describe('Vehicle Schema', () => {
       brandId: 1,
     };
     const result = vehicleSchema.safeParse(validVehicle);
-    expect(result.success).toBe(true);
+    expect(result.success).toBeTruthy();
   });
 });

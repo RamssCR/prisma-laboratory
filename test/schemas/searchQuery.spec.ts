@@ -7,7 +7,7 @@ describe('Search Query Schema', () => {
       search: 'example search',
     };
     const result = searchQuery.safeParse(validSearchQuery);
-    expect(result.success).toBe(true);
+    expect(result.success).toBeTruthy();
   });
 
   test('debe invalidar una consulta de búsqueda con menos de 2 caracteres', () => {
@@ -15,6 +15,6 @@ describe('Search Query Schema', () => {
       query: 'a',
     };
     const result = searchQuery.safeParse(invalidSearchQuery);
-    expect(result.success).toBe(false);
+    expect(result.success).toBeFalsy();
   });
 });

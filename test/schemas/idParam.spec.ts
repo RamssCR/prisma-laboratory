@@ -7,6 +7,6 @@ describe('Id Param Schema', () => {
       id: 1,
     };
     const result = idParams.safeParse(validId);
-    expect(result.success).toBe(true);
+    expect(result.success).toBeTruthy();
   });
 });

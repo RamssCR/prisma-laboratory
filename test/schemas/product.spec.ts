@@ -13,6 +13,6 @@ describe('Product Schema', () => {
       brandId: 1,
     };
     const result = productSchema.safeParse(validProduct);
-    expect(result.success).toBe(true);
+    expect(result.success).toBeTruthy();
   });
 });
