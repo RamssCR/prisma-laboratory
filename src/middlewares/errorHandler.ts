@@ -1,7 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import status from 'http-status';
 import { logger } from '#utils/logger';
-import { Prisma } from 'generated/prisma/client';
 
 /**
  * Handles errors in an Express application.
@@ -21,51 +20,6 @@ export const errorHandler = (
   res: Response,
   _next: NextFunction,
 ) => {
-  if (error instanceof Prisma.PrismaClientKnownRequestError) {
-    logger.error(`Prisma Error Code: ${error}`);
-
-    switch (error.code) {
-      case 'P2002': {
-        return res.status(status.CONFLICT).json({
-          status: 'error',
-          code: status.CONFLICT,
-          message: `El valor del campo ya existe en el sistema.`,
-        });
-      }
-
-      case 'P2025':
-        return res.status(status.NOT_FOUND).json({
-          status: 'error',
-          code: status.NOT_FOUND,
-          message: 'El registro solicitado no fue encontrado.',
-        });
-
-      case 'P2003':
-        return res.status(status.BAD_REQUEST).json({
-          status: 'error',
-          code: status.BAD_REQUEST,
-          message:
-            'No se puede realizar la operación debido a datos relacionados existentes.',
-        });
-
-      default:
-        return res.status(status.BAD_REQUEST).json({
-          status: 'error',
-          code: status.BAD_REQUEST,
-          message: `Error de base de datos: ${error.message}`,
-        });
-    }
-  }
-
-  if (error instanceof Prisma.PrismaClientValidationError) {
-    logger.error(error.message);
-    return res.status(status.BAD_REQUEST).json({
-      status: 'error',
-      code: status.BAD_REQUEST,
-      message: 'Error de validación en los datos enviados a la base de datos.',
-    });
-  }
-
   if (error instanceof Error) {
     logger.error(error?.stack);
     return res.status(status.INTERNAL_SERVER_ERROR).json({

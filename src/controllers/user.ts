@@ -41,7 +41,7 @@ export const getUsers: RequestHandler = async (_req, res, next) => {
     res.json({
       success: true,
       message: 'Users obtained successfully',
-      users,
+      data: users,
     });
   } catch (error) {
     next(error);
@@ -66,7 +66,7 @@ export const updateUser: RequestHandler = async (req, res, next) => {
     res.json({
       success: true,
       message: 'User updated successfully',
-      user,
+      data: user,
     });
   } catch (error) {
     next(error);
